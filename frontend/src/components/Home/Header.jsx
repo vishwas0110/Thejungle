@@ -7,7 +7,10 @@ const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="h-16 border flex flex-row justify-between items-center">
+    <div className="h-16 border flex flex-row justify-evenly items-center head">
+      <div className="ml-3"><span className="material-symbols-outlined text-gray-600 cursor-pointer" onClick={()=>{
+        document.getElementById("sidebar").style.left = "0px";
+      }}>menu</span></div>
       <div className="w-full flex flex-row justify-center">
         <img src={Logo} alt="logo" className="w-48"/>
       </div>

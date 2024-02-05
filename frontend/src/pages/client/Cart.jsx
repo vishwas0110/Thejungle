@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../../components/Home/Header';
 import { useNavigate } from 'react-router-dom';
 import hoodie from '../../Assets/hoodie.png'
+import Sidebar from '../../components/Home/Sidebar';
 
 const Cart = () =>{
 
@@ -30,6 +31,7 @@ const Cart = () =>{
     return(
         <div>
             <Header/>
+            <Sidebar/>
             <div>
                 <h1 className='text-center mt-2 uppercase text-xs text-gray-600'>Cart</h1>
                 {
@@ -43,18 +45,21 @@ const Cart = () =>{
                                         </div>
                                         <div>
                                             <h1 className='text-base textgray-600'>{itm.name}</h1>
-                                            <h1 className='text-xs textgray-600'>{itm.description}</h1>
-                                            <h1 className='text-xs textgray-600'>₹ {itm.price}</h1>
+                                            <h1 className='text-xs textgray-600'>"Jungle: Where urban style meets untamed adventure on every tee."</h1>
+                                            <h1 className='text-xs textgray-600'>₹ {itm.price} /-</h1>
+                                            <h1 className='text-xs textgray-600'>SIZE : {itm.size}</h1>
                                         </div>
                                         <div onClick={()=>deleteFromCart(itm)}>
-                                            <span className='material-symbols-outlined text-xs text-red-600 pr-3 cursor-pointer'>delete</span>
+                                            <span className='material-symbols-outlined text-sm text-red-600 pr-3 cursor-pointer'>delete</span>
                                         </div>
                                     </div>
                                 );
                             })
                         }
                         <div className='flex flex-row mt-4'>
-                            <button className='p-1 text-white bg-black text-base mx-auto'>Checkout</button>
+                            <button className='p-1 text-white bg-black text-base mx-auto' onClick={()=>{
+                                navigate("/checkout");
+                            }}>Checkout</button>
                         </div>
                     </div> : <div className='flex flex-col justify-center items-center pt-4'>
                         <h1>Your Cart is empty ! </h1>

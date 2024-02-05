@@ -18,7 +18,7 @@
   background-color: transparent;
 }
 .home-content{
-  background-image: url("./Assets/Home/background2.jpg");
+  background-image: url("./Assets/junglemain.jpg");
   width: 100%;
   height: 100vh;
   background-size: cover;
@@ -29,7 +29,7 @@
     width: 100%;
     height: 100vh;
     background-size: cover;
-    background-image: url("./Assets/Home/background3.jpg");
+    background-image: url("./Assets/junglemain.jpg");
   }
 }
 
@@ -90,4 +90,13 @@
     cursor: pointer;
    padding: 10px;
    color:white;
+}
+
+.head{
+  background-color: transparent;
+}
+
+.sidebar{
+  left: -200px;
+  transition: 1s all ease-in-out;
 }
