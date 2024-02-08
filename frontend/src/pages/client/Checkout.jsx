@@ -4,14 +4,15 @@ import Sidebar from "../../components/Home/Sidebar";
 
 const Checkout = () => {
     const [cartItems, setCartItems] = useState([]);
-    let [total,setTotal] = useState(0);
+    let [total, setTotal] = useState(0);
 
-    const [data,setData] = useState({
-        Mobile:"",
-        Email:"",
-        State:"",
-        Address:"",
-        Pincode:""
+    const [data, setData] = useState({
+        Mobile: "",
+        Email: "",
+        State: "",
+        Address: "",
+        Pincode: "",
+        City:"",
     });
 
     const getItems = () => {
@@ -27,8 +28,8 @@ const Checkout = () => {
     return (
         <div>
             <Header />
-            <Sidebar/>
-            <div>
+            <Sidebar />
+            <div className="pt-20">
                 <h1 className="text-xs text-center mt-2">Items</h1>
             </div>
             <div>
@@ -36,22 +37,21 @@ const Checkout = () => {
                     <div>
                         {
                             cartItems.map(itm => {
-                                total=total+(Number(itm.price));
-                                return(
-                                <div className="flex flex-row gap-3 justify-evenly mt-3 items-center">
-                                    <div className="p-3">
-                                        <img src={itm.image} alt="" className="rounded-full w-12" />
-                                    </div>
-                                    <div>
-                                        <h1 className="text-base textgray-600">{itm.name}</h1>
-                                        <h1 className="text-xs textgray-600">
-                                            "Jungle: Where urban style meets untamed adventure on every
-                                            tee."
-                                        </h1>
-                                        <h1 className="text-xs textgray-600">₹ {itm.price} /-</h1>
-                                        <h1 className="text-xs textgray-600">SIZE : {itm.size}</h1>
-                                    </div>
-                                </div>);
+                                total = total + (Number(itm.price));
+                                return (
+                                    <div className="flex flex-row gap-3 justify-evenly mt-3 items-center">
+                                        <div className="p-3">
+                                            <img src={itm.image} alt="" className="w-20" />
+                                        </div>
+                                        <div>
+                                            <h1 className="text-base textgray-600">{itm.name}</h1>
+                                            <h1 className="text-xs textgray-600">
+                                                {itm.description}
+                                            </h1>
+                                            <h1 className="text-xs textgray-600">₹ {itm.price} /-</h1>
+                                            <h1 className="text-xs textgray-600">SIZE : {itm.size}</h1>
+                                        </div>
+                                    </div>);
                             })
                         }
                     </div>
@@ -63,26 +63,17 @@ const Checkout = () => {
                 </div>
                 <h1 className="text-center font-bold mt-3">Contact Details</h1>
                 <div className="flex flex-col gap-3 justify-center items-center p-4">
-                    <div className="flex flex-row items-center gap-2 px-4">
-                        <label htmlFor="mobile" className="text-xs">Mobile Number</label>
-                        <input type="number" id="mobile" className=" bg-white border"/>
-                    </div>
-                    <div className="flex flex-row items-center gap-2 px-4">
-                        <label htmlFor="email" className="text-xs">Email Address</label>
-                        <input type="email" id="email" className=" bg-white border"/>
-                    </div>
-                    <div className="flex flex-row items-center gap-2 px-4">
-                        <label htmlFor="state" className="text-xs"> State</label>
-                        <input type="text" id="state" className=" bg-white border"/>
-                    </div>
-                    <div className="flex flex-row items-center gap-2 px-4">
-                        <label htmlFor="Address" className="text-xs"> Address</label>
-                        <input type="text" id="Address" className=" bg-white border"/>
-                    </div>
-                    <div className="flex flex-row items-center gap-2 px-4">
-                        <label htmlFor="pin" className="text-xs">Pincode</label>
-                        <input type="number" id="pin" className=" bg-white border"/>
-                    </div>
+                    <form action="" className="flex flex-col gap-3 justify-center items-center">
+                        <input type="number" placeholder="Enter Mobile Number" className="p-2 outline-orange-500 border w-full"/>
+                        <input type="email" placeholder="Enter Email Address" className="p-2 outline-orange-500 border w-full" />
+                        <input type="email" placeholder="Enter Address" className="p-2 outline-orange-500 border w-full" />
+                        <div className="flex flex-row gap-2 flex-wrap">
+                            <input type="text" placeholder="Enter City" className="p-2 outline-orange-500 border md:w-72 w-full" />
+                            <input type="text" placeholder="Enter State" className="p-2 outline-orange-500 border md:w-72 w-full" />
+                            <input type="text" placeholder="Enter Flatno / Landmark" className="p-2 outline-orange-500 border md:w-72 w-full" />
+                            <input type="number" placeholder="Enter Pincode" className="p-2 outline-orange-500 border md:w-72 w-full" />
+                        </div>
+                    </form>
                     <button className="mt-4 border p-2 text-xs bg-black text-white">Proceed to pay</button>
                 </div>
             </div>

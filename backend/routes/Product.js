@@ -5,7 +5,7 @@ const router = express.Router();
 router.get(`/categorywise/:cat/:subcat`, async (req, res) => {
     const categoryproduts = await products.find({ $and: [{ category: req.params.cat }, { subcategory: req.params.subcat }] });
     if (!categoryproduts) {
-       return res.status(500).json({ success: false, "description": "cannot get the items!!!" });
+        return res.status(500).json({ success: false, "description": "cannot get the items!!!" });
     }
     res.send(categoryproduts);
 
@@ -14,14 +14,13 @@ router.get(`/categorywise/:cat/:subcat`, async (req, res) => {
 router.get('/', async (req, res) => {
     const allproducts = await products.find();
     if (!allproducts) {
-       return res.status(500).json({ success: false, "description": "cannot get the items!!!" });
+        return res.status(500).json({ success: false, "description": "cannot get the items!!!" });
     }
-    console.log('called get')
     res.send(allproducts);
 })
 
 router.post('/postproducts', async (req, res) => {
-    try{
+    try {
         const product = new products({
             name: req.body.name,
             description: req.body.description,
@@ -34,20 +33,20 @@ router.post('/postproducts', async (req, res) => {
             reviews: req.body.reviews,
             dateCreated: req.body.dateCreated
         })
-        const saved = await product.save()
+        const saved = await product.save();
         if (!saved) {
-           return res.status(500).json({success: false, "description": "cannot insert the items!!!"})
+            return res.status(500).json({ success: false, "description": "cannot insert the items!!!" })
         }
         res.status(200).json({
-            success:true,
+            success: true,
             product
         })
-    }catch(err){
+    } catch (err) {
         res.status(200).json({
-            success:false,
-            message:err.message
+            success: false,
+            message: err.message
         });
-    }   
+    }
 });
 
 router.get('/:id', async (req, res) => {
@@ -63,16 +62,16 @@ router.delete('/:id', async (req, res) => {
     console.log(req.params.id);
     const deleteditem = await products.deleteOne({ _id: req.params.id });
     if (deleteditem.acknowledged === false) {
-       return res.json({ success: false, "description": "cannot delete the items. check your item id" });
+        return res.json({ success: false, "description": "cannot delete the items. check your item id" });
     }
 
     if (deleteditem.acknowledged === true) {
-      return res.send({ success: true });
+        return res.send({ success: true });
     }
 })
 
 router.put('/:id', async (req, res) => {
-    try{
+    try {
         const update = await products.updateOne(
             { _id: req.params.id },
             {
@@ -91,17 +90,17 @@ router.put('/:id', async (req, res) => {
             }
         );
         if (!update) {
-           return res.json({ success: false, "description": "cannot update the items. check your item id" })
+            return res.json({ success: false, "description": "cannot update the items. check your item id" })
         } else {
             res.status(200).json({
-                success:true,
-                message:"product updated !"
+                success: true,
+                message: "product updated !"
             });
         }
-    }catch(e){
+    } catch (e) {
         res.status(200).json({
-            success:false,
-            message:e.message
+            success: false,
+            message: e.message
         });
     }
 })

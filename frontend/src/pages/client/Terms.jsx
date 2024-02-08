@@ -7,7 +7,7 @@ const Terms = () => {
         <div>
             <Header />
             <Sidebar />
-            <div>
+            <div className='p-20'>
                 <h1 className='text-center mt-3 text-xs'>Terms & Conditions</h1>
                 <div className='p-3 text-xs'>
                     <h1 className='text-sm'>ORDER PROCESS AND SHIPPING </h1>
