@@ -20,6 +20,8 @@ const Collection = () =>{
                 console.log(err);
                 setLoading(false);
             })
+        }).catch(err=>{
+            console.log(err);
         })
     }   
 

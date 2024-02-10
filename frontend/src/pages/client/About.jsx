@@ -15,6 +15,9 @@ const About = () => {
                 <p>But Jungle is more than just clothing; it's a movement. It's about celebrating the untamed spirit within each of us and recognizing the power of coming together. Whether you're navigating the concrete jungle or exploring uncharted territories, know that you're never alone – you're part of THE JUNGLE FAMILY.</p>
                 <p>Join us as we carve our path through the urban wilderness, leaving our mark not just on the streets but on the hearts of those who dare to dream. Together, we are Jungle – united in our diversity, unstoppable in our passion, and bound by the unbreakable ties of brotherhood.</p>
                 <p>Welcome to THE JUNGLE . Welcome home.</p>
+                <ul className='list-disc p-3'>
+                    <li className='font-bold'>This " JUNGLETHETRIBE.com " is affiliated to VIROH ENTERPRISES</li>
+                </ul>
             </div>
         </div>
     );

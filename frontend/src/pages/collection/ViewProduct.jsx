@@ -145,7 +145,7 @@ const ViewProduct = () => {
               <div>
                 <h1 className="mt-3  text-center">Related Products</h1>
                 {
-                  !reLoading && <div className="grid md:grid-cols-2 justify-center">
+                  !reLoading && <div className="grid md:grid-cols-2 justify-center gap-2">
                     {
                       products && products.map(prdct=>{
                         if(prdct._id !== product._id){
