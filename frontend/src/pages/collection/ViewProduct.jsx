@@ -97,7 +97,7 @@ const ViewProduct = () => {
             </p> */}
             <h1 className="text-gray-700 capitalize text-xs">RS {product.price}</h1>
             <div className="flex flex-row gap-8 text-xs">
-              <h1 className={`cursor-pointer ${size === "XSS" ? "underline underline-offset-2" : ""}`} onClick={() => setSize("XSS")}>XSS</h1>
+              <h1 className={`cursor-pointer ${size === "XXS" ? "underline underline-offset-2" : ""}`} onClick={() => setSize("XXS")}>XXS</h1>
               <h1 className={`cursor-pointer ${size === "XS" ? "underline underline-offset-2" : ""}`} onClick={() => setSize("XS")}>XS</h1>
               <h1 className={`cursor-pointer ${size === "S" ? "underline underline-offset-2" : ""}`} onClick={() => setSize("S")}>S</h1>
               <h1 className={`cursor-pointer ${size === "M" ? "underline underline-offset-2" : ""}`} onClick={() => setSize("M")}>M</h1>

@@ -1,35 +1,34 @@
-const express = require('express');
-const Ordersdata = require('../DB/models/OrderSchema');
+const express = require("express");
+const orderModel = require("../DB/models/Order");
+const userModel = require("../DB/models/User");
+
 const router = express.Router();
 
-router.post('/postorders', async (req, res) => {
-    let orderResponse = new Ordersdata({
-        orderitems: req.body.orderitems,
-        shippingAddress1: req.body.address1,
-        shippingAddress2: req.body.address2,
-        city: req.body.city,
-        zip: req.body.zip,
-        country: req.body.country,
-        totalprice: req.body.totalprice,
-        name: req.body.userName,
-        email: req.body.email,
-        phoneno: req.body.phoneno,
-    });
-    let response = await orderResponse.save();
-    if (!response) {
-        return res.status(500).json({ success: false, "description": "cannot insert orders plz try again" })
+router.post("/add",async(req,res)=>{
+    try{
+        const order = new orderModel(req.body);
+        const user = await userModel.findOne({Email:req.body.Email});
+        if(user){
+            order.userId = user._id;
+            const saved = await order.save();
+            if(saved){
+                res.status(200).json({
+                    success:true,
+                    orderID:saved._id,
+                    userID:user._id
+                })
+            }else{
+                throw new Error("cannot save order");
+            }
+        }else{
+            throw new Error("user not found !");
+        }
+    }catch(e){
+        res.status(200).json({
+            success:false,
+            message:e.message
+        });
     }
-    res.send({ success: true });
-
-});
-
-router.get('/', async (req, res) => {
-    const myorders = await Ordersdata.find();
-    if (!myorders || myorders == []) {
-        return res.status(500).json({ success: false, "description": "cannot get the items!!!" })
-    }
-    console.log(myorders);
-    res.send(myorders)
 })
 
 module.exports = router;

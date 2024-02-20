@@ -109,3 +109,7 @@
   url("./Assets/Fonts/impact.ttf")
 
 }
+
+.logInp{
+  outline-color: orange;
+}

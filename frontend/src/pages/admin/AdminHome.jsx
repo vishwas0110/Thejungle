@@ -1,5 +1,4 @@
 import React from "react";
-import Logo from '../../Assets/logo.png';
 import Admin from './AdminPannel';
 import { Outlet } from 'react-router-dom'
 
@@ -8,7 +7,7 @@ const AdminHome = () => {
     <div>
       <div className="h-16 border flex flex-row justify-between items-center">
         <div className="w-full flex flex-row justify-center">
-          <img src={Logo} alt="logo" className="w-48" />
+          <h1 style={{fontFamily:"impact",fontSize:50,color:"#FF6200"}}>JUNGLE</h1>
         </div>
         <h1 className="text-xs">Welcome Admin</h1>
       </div>

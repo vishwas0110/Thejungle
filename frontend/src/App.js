@@ -13,8 +13,16 @@ import Terms from './pages/client/Terms.jsx';
 import Refund from './pages/client/Refund.jsx';
 import Shipping from './pages/client/Shipping.jsx';
 import About from './pages/client/About.jsx';
+import Login from './pages/client/Login.jsx';
+import AdminLogin from './pages/admin/Login.jsx';
+import Signup from './pages/client/Signup.jsx';
+import Success from './pages/client/Success.jsx';
+import { useSelector } from 'react-redux';
 
 function App() {
+
+  const AdminA = useSelector(state=>state.AdminAuth);
+
   return (
     <Routes>
       <Route path="/" element={<Home/>}/>
@@ -24,13 +32,17 @@ function App() {
       <Route path="/terms" element={<Terms/>}/>
       <Route path="/refund" element={<Refund/>}/>
       <Route path="/shipping" element={<Shipping/>}/>
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/signup" element={<Signup/>}/>
       <Route path="/checkout" element={<Checkout/>}/>
+      <Route path="/success/:tid/:oid" element={<Success/>}/>
       <Route path="/about" element={<About/>}/>
-      <Route path='/admin' element={<AdminHome/>}>
+      <Route path="/adminlogin" element={<AdminLogin/>}/>
+      {AdminA && <Route path='/admin' element={<AdminHome/>}>
         <Route path="/admin/addproduct" element={<Products/>}/>
         <Route path="/admin/manageproducts" element={<ManageProduct/>}/>
         <Route path="/admin/editproduct/:id" element={<EditProduct/>}/>
-      </Route>
+      </Route>}
     </Routes>
   );
 }

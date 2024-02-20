@@ -3,10 +3,12 @@ import Header from '../../components/Home/Header';
 import { useNavigate } from 'react-router-dom';
 import hoodie from '../../Assets/hoodie.png'
 import Sidebar from '../../components/Home/Sidebar';
+import { useSelector } from 'react-redux';
 
 const Cart = () =>{
 
     const [cartItems,setCartItems] = useState([]);
+    const Auth = useSelector(state=>state.Auth);
     const navigate = useNavigate();
 
     const getCartItems = () =>{
@@ -38,11 +40,10 @@ const Cart = () =>{
                     cartItems.length > 0 ? <div>
                         {
                             cartItems.map(itm=>{
-                                // console.log(itm);
                                 return(
-                                    <div className='flex flex-row gap-3 justify-evenly mt-3 items-center'>
-                                        <div className='p-3'>
-                                            <img src={itm.image} alt="" className='w-20'/>
+                                    <div className='flex flex-row gap-3 justify-evenly mt-3'>
+                                        <div className='px-3'>
+                                            <img src={itm.image} alt="" className='w-52 rounded-xl'/>
                                         </div>
                                         <div className='flex flex-col gap-1'>
                                             <h1 className='text-base textgray-600'>{itm.name}</h1>
@@ -51,7 +52,7 @@ const Cart = () =>{
                                             <h1 className='text-xs textgray-600'>SIZE : {itm.size}</h1>
                                         </div>
                                         <div onClick={()=>deleteFromCart(itm)}>
-                                            <span className='material-symbols-outlined text-sm text-red-600 pr-3 cursor-pointer'>delete</span>
+                                            <span className='material-symbols-outlined text-xl text-red-600 pr-3 cursor-pointer'>delete</span>
                                         </div>
                                     </div>
                                 );
@@ -59,7 +60,11 @@ const Cart = () =>{
                         }
                         <div className='flex flex-row mt-4'>
                             <button className='p-1 text-white bg-black text-base mx-auto' onClick={()=>{
-                                navigate("/checkout");
+                                if(Auth){
+                                    navigate("/checkout");
+                                }else{
+                                    navigate("/login");
+                                }
                             }}>Checkout</button>
                         </div>
                     </div> : <div className='flex flex-col justify-center items-center pt-4'>
