@@ -6,6 +6,8 @@ const orderModel = require("../DB/models/Order");
 const router = express.Router();
 
 const BASE = "https://junglethetribe.com";
+const BASE2 = "https://www.api.junglethetribe.com";
+
 // const BASE = "http://localhost:3000"
 
 router.post("/init", async (req, res) => {
@@ -28,10 +30,10 @@ router.post("/init", async (req, res) => {
             merchantUserId: "MUID9EFW8E9F89EWF8C",
             name: req.body.Name,
             amount: req.body.TotalAmount * 100,
-            redirectUrl: `${BASE}/api/thejungle/payment/status/${tid}/${userID}/${orderID}`,
+            redirectUrl: `${BASE2}/api/thejungle/payment/status/${tid}/${userID}/${orderID}`,
             redirectMode: "POST",
             mobileNumber: req.body.Mobile,
-            callbackUrl: `${BASE}/api/thejungle/payment/status/${tid}/${userID}/${orderID}`,
+            callbackUrl: `${BASE2}/api/thejungle/payment/status/${tid}/${userID}/${orderID}`,
             paymentInstrument: {
                 type: "PAY_PAGE",
             },

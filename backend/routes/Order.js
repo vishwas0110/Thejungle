@@ -31,4 +31,42 @@ router.post("/add",async(req,res)=>{
     }
 })
 
+router.get("/all",async(req,res)=>{
+    try{
+        console.log("call")
+        const orders = await orderModel.find();
+        console.log(orders)
+        if(orders){
+            res.status(200).json({
+                success:true,
+                orders
+            });
+        }
+    }catch(e){
+        res.status(200).json({
+            success:false,
+            message:e.message
+        });
+    }
+})
+
+router.get("/:id",async(req,res)=>{
+    try{
+        const order = await orderModel.findById(req.params.id);
+        if(order){
+            res.status(200).json({
+                success:true,
+                order
+            });
+        }else{
+            throw new Error("Order not Found !")
+        }
+    }catch(e){
+        res.status(200).json({
+            success:false,
+            message:e.message
+        });
+    }
+})
+
 module.exports = router;

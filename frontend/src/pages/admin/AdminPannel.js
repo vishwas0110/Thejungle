@@ -20,7 +20,7 @@ const Admin = () => {
         <span class="material-symbols-outlined">inventory</span>
         <h1>Manage Products</h1>
       </div>
-      <div className="flex flex-row text-gray-900 uppercase text-sm items-center pl-2 cursor-pointer hover:text-red-700 gap-2">
+      <div className="flex flex-row text-gray-900 uppercase text-sm items-center pl-2 cursor-pointer hover:text-red-700 gap-2" onClick={()=>navigate("/admin/orders")}>
         <span class="material-symbols-outlined">inventory_2</span>
         <h1>Orders</h1>
       </div>

@@ -31,6 +31,7 @@ const Login = () => {
             if(dta.success){
                 dispatch(Actions.setAdminAuth(true));
                 navigate("/admin");
+                sessionStorage.setItem("JGLE_TK",JSON.stringify(dta.token));
             }else{
                 alert(dta.message)
             }
