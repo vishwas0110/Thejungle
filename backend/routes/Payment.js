@@ -9,6 +9,7 @@ const BASE = "https://junglethetribe.com";
 const BASE2 = "https://www.api.junglethetribe.com";
 
 // const BASE = "http://localhost:3000"
+// const BASE2 = "http://localhost:9000"
 
 router.post("/init", async (req, res) => {
     try {
@@ -97,9 +98,12 @@ router.post("/status/:id/:uid/:oid", async (req, res) => {
         const sha256 = crypto.createHash("sha256").update(string).digest("hex");
         const checksum = sha256 + "###" + keyIndex;
 
+        const testURL = `https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status/${merchantId}/${merchantTransactionId}`
+        const prodURL = `https://api.phonepe.com/apis/hermes/pg/v1/status/${merchantId}/${merchantTransactionId}`
+
         const options = {
             method: "GET",
-            url: `https://api.phonepe.com/apis/hermes/pg/v1/status/${merchantId}/${merchantTransactionId}`,
+            url: prodURL,
             headers: {
                 accept: "application/json",
                 "Content-Type": "application/json",

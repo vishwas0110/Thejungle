@@ -6,7 +6,9 @@ require('dotenv/config');
 connectDB();
 
 //middleware
-app.use(cors());
+app.use(cors({
+    origin:["https://junglethetribe.com","https://www.junglethetribe.com","http://localhost:3000"]
+}));
 app.use(express.json());
 
 const api=process.env.API_URL;
